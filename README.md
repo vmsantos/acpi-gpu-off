@@ -8,7 +8,8 @@ Some older Intel + AMD hybrid laptops remain significantly hotter under Linux ev
 
 On my Dell laptop, runtime PM alone left the system idling around **62°C**, while executing firmware ACPI power-off methods reduced idle temperature to approximately **50°C**.
 
-This repository provides a simple script and a **systemd service** to automatically power off the GPU at boot.
+This repository provides a simple script to power off the GPU via ACPI firmware methods.
+A systemd service is included as a convenience for automatic execution at boot.
 
 ## Tested Hardware
 
@@ -21,8 +22,14 @@ The ACPI methods used are firmware-specific and may not exist on other systems.
 
 ## Requirements
 
-* `acpi_call` kernel module
-* `systemd`
+- `acpi_call` kernel module
+- Root privileges to write to `/proc/acpi/call`
+
+## Optional
+
+- `systemd` (for automatic execution at boot)
+
+The script works independently of any init system. It can be executed manually or integrated into any service manager (systemd, OpenRC, etc.).
 
 ## Installation
 
