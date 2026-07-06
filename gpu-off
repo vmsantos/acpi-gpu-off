@@ -1,27 +1,26 @@
 #!/bin/bash
+# Turns off Radeon dGPU
 
-# --- Otimizacao Termica: Desligar GPU Radeon ---
-
-# Carrega o modulo necessario
+# Load acpi_call kernel module
 modprobe acpi_call
 
-# Aguarda a criacao de /proc/acpi/call
+# Waits for /proc/acpi/call
 sleep 2
 
-# Verifica se a interface ACPI esta disponivel
+# Check/logs if ACPI interface is ready, but continues just in case it takes longer
 if [ ! -e /proc/acpi/call ]; then
     logger -t gpu-off "WARNING: /proc/acpi/call not found; continuing anyway"
 fi
 
-# Inicializa ATPX (alguns firmwares exigem isso)
+# Initialize ATPX (might be needed for some firmwares, but probably not)
 echo '\_SB_.PCI0.GFX0.ATPX' > /proc/acpi/call
 
-# Desliga a GPU Radeon
+# Turns off Radeon GPU
 echo '\_SB.PCI0.PEG0.PEGP._OFF' > /proc/acpi/call
 echo '\_SB.PCI0.PEG0.PEGP.SGOF' > /proc/acpi/call
 
-# Log opcional
-echo "GPU Radeon desativada via ACPI em $(date)" >> /tmp/gpu_status.log
+# Optional log
+echo "Radeon GPU powered off through ACPI $(date)" >> /tmp/gpu_status.log
 
 # -----------------------------------------------
 exit 0
