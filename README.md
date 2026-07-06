@@ -110,6 +110,7 @@ This is not a generic Linux GPU power management solution.
 
 It relies on vendor-specific ACPI methods exposed by the laptop firmware. Many systems use different method names, require additional arguments, or do not support ACPI power-off at all.
 
+This will only work if your firmware exposes working ACPI methods (_OFF, SGOF, or ATPX).
 If your machine does not expose these methods, this project will likely not work without modification.
 
 ## License
