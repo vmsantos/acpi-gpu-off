@@ -12,7 +12,7 @@ This repository provides a simple script plus either a systemd service or a runi
 
 ## Tested Hardware
 
-* Dell Inspiron 14z 5423 laptop (Intel Ivy Bridge + AMD Radeon Enduro)
+* 2013 Dell Inspiron 14z 5423 laptop (Intel Ivy Bridge + AMD Radeon Enduro)
 * Oracle Linux 9 UEK 6.12
 * antiX Linux (runit)
 * `acpi_call` kernel module
