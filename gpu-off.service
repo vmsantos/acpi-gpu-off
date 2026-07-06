@@ -1,0 +1,11 @@
+[Unit]
+Description=ACPI GPU OFF (firmware power gating)
+After=systemd-modules-load.service
+Before=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/gpu-off
+
+[Install]
+WantedBy=multi-user.target
